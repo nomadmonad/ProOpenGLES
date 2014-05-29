@@ -121,9 +121,9 @@
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     
+    glTranslatef(0.0, (GLfloat)(sinf(transY)/2.0), z);
     glRotatef(spinY, 0.0, 1.0, 0.0);
     glRotatef(spinX, 1.0, 0.0, 0.0);
-    glTranslatef(0.0, (GLfloat)(sinf(transY)/2.0), z);
 
     transY += 0.075f;
     
