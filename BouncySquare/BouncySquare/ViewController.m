@@ -110,6 +110,8 @@
     
     static GLfloat transY = 0.0;
     static GLfloat z = -2.0;
+    static GLfloat spinX = 0.0;
+    static GLfloat spinY = 0.0;
     
     glClearColor(0.5, 0.5, 0.5, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -118,6 +120,9 @@
     glCullFace(GL_BACK);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+    
+    glRotatef(spinY, 0.0, 1.0, 0.0);
+    glRotatef(spinX, 1.0, 0.0, 0.0);
     glTranslatef(0.0, (GLfloat)(sinf(transY)/2.0), z);
 
     transY += 0.075f;
@@ -135,6 +140,8 @@
     }
     counter++;
     
+    spinX += 0.25;
+    spinY += 0.25;
 }
 
 - (void)setClipping
