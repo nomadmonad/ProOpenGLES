@@ -25,6 +25,8 @@
 		8DFFAA24193713A300F555CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DFFA9FE193713A300F555CC /* UIKit.framework */; };
 		8DFFAA2C193713A300F555CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8DFFAA2A193713A300F555CC /* InfoPlist.strings */; };
 		8DFFAA2E193713A300F555CC /* PlanetSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFAA2D193713A300F555CC /* PlanetSampleTests.m */; };
+		8DFFAA391937141000F555CC /* Planet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFAA381937141000F555CC /* Planet.m */; };
+		8DFFAA3C19371B4600F555CC /* OpenGLSolarSystemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DFFAA3B19371B4600F555CC /* OpenGLSolarSystemController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,10 @@
 		8DFFAA29193713A300F555CC /* PlanetSampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PlanetSampleTests-Info.plist"; sourceTree = "<group>"; };
 		8DFFAA2B193713A300F555CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8DFFAA2D193713A300F555CC /* PlanetSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlanetSampleTests.m; sourceTree = "<group>"; };
+		8DFFAA371937141000F555CC /* Planet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Planet.h; sourceTree = "<group>"; };
+		8DFFAA381937141000F555CC /* Planet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Planet.m; sourceTree = "<group>"; };
+		8DFFAA3A19371B4600F555CC /* OpenGLSolarSystemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLSolarSystemController.h; sourceTree = "<group>"; };
+		8DFFAA3B19371B4600F555CC /* OpenGLSolarSystemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLSolarSystemController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +139,10 @@
 				8DFFAA18193713A300F555CC /* ViewController.m */,
 				8DFFAA1A193713A300F555CC /* Images.xcassets */,
 				8DFFAA05193713A300F555CC /* Supporting Files */,
+				8DFFAA371937141000F555CC /* Planet.h */,
+				8DFFAA381937141000F555CC /* Planet.m */,
+				8DFFAA3A19371B4600F555CC /* OpenGLSolarSystemController.h */,
+				8DFFAA3B19371B4600F555CC /* OpenGLSolarSystemController.m */,
 			);
 			path = PlanetSample;
 			sourceTree = "<group>";
@@ -268,6 +278,8 @@
 				8DFFAA19193713A300F555CC /* ViewController.m in Sources */,
 				8DFFAA0F193713A300F555CC /* AppDelegate.m in Sources */,
 				8DFFAA0B193713A300F555CC /* main.m in Sources */,
+				8DFFAA391937141000F555CC /* Planet.m in Sources */,
+				8DFFAA3C19371B4600F555CC /* OpenGLSolarSystemController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
