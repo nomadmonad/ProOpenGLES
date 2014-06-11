@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D0CAFD1194193D00001BBB5 /* OpenGLSolarSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLSolarSystem.h; sourceTree = "<group>"; };
 		8DFFA9F7193713A300F555CC /* PlanetSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanetSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFFA9FA193713A300F555CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8DFFA9FC193713A300F555CC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -143,6 +144,7 @@
 				8DFFAA381937141000F555CC /* Planet.m */,
 				8DFFAA3A19371B4600F555CC /* OpenGLSolarSystemController.h */,
 				8DFFAA3B19371B4600F555CC /* OpenGLSolarSystemController.m */,
+				8D0CAFD1194193D00001BBB5 /* OpenGLSolarSystem.h */,
 			);
 			path = PlanetSample;
 			sourceTree = "<group>";
@@ -484,6 +486,7 @@
 				8DFFAA33193713A300F555CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8DFFAA34193713A300F555CC /* Build configuration list for PBXNativeTarget "PlanetSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +495,7 @@
 				8DFFAA36193713A300F555CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

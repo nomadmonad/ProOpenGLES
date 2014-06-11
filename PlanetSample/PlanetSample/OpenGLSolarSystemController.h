@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface OpenGLSolarSystemController : NSObject
 -(void)execute;
 -(id)init;
 -(void)initGeometry;
+- (void)initLighting;
 @end

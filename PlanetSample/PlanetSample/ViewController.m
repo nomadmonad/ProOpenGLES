@@ -37,6 +37,7 @@
     m_solarSystem = [[OpenGLSolarSystemController alloc] init];
     
     [EAGLContext setCurrentContext:self.context];
+    [m_solarSystem initLighting];
     [self setClipping];
 }
 
@@ -75,7 +76,7 @@
 - (void)setClipping
 {
     float aspectRatio;
-    const float zNear = 2.15;
+    const float zNear = 0.1;
     const float zFar = 1000;
     const float fieldOfView = 60.0;
     GLfloat size;

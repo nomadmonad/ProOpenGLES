@@ -13,6 +13,7 @@
 {
     GLfloat* m_VertexData;
     GLubyte* m_ColorData;
+    GLfloat* m_NormalData;
     GLint m_Stacks, m_slices;
     GLfloat m_Scale;
     GLfloat m_Squash;
@@ -27,6 +28,7 @@
     unsigned int colorIncrement = 0;
     unsigned int blue = 0;
     unsigned int red = 255;
+    int numVertices = 0;
     
     m_Scale = radius;
     m_Squash = squash;
@@ -42,11 +44,14 @@
         // 頂点データを格納するため、格納する領域を以下の計算式で求める
         //   格納する領域のサイズ = GLFloatのサイズ * 三角形の頂点の数 * （（（経度方向の分割数 + 1） * 2） * 緯度方向の分割数）
         //   * 経度方向はくし切りにするため、分割線が10本引かれた場合、必要な矩形の数は 10 + 1 個となる
-        GLfloat* vPtr = m_VertexData = (GLfloat*)malloc(sizeof(GLfloat) * 3 * (((m_slices + 1) * 2) * m_Stacks));
+        GLfloat* vPtr = m_VertexData = (GLfloat *)malloc(sizeof(GLfloat) * 3 * (((m_slices + 1) * 2) * m_Stacks));
         // 頂点データのColor
         // 格納する領域を以下の計算式で求める
         //   格納する領域のサイズ = GLFloatのサイズ * RGBAの4要素 * （（（経度方向の分割数 + 1） * 2） * 緯度方向の分割数）
-        GLubyte* cPtr = m_ColorData = (GLubyte*)malloc(sizeof(GLubyte) * 4 * (((m_slices + 1) * 2) * m_Stacks));
+        GLubyte* cPtr = m_ColorData = (GLubyte *)malloc(sizeof(GLubyte) * 4 * (((m_slices + 1) * 2) * m_Stacks));
+        
+        // 法線ベクトル用のデータを格納する 光源の反射方向
+        GLfloat* nPtr = m_NormalData = (GLfloat *)malloc(sizeof(GLfloat) * 3 + (((m_slices + 1) * 2) * m_Stacks));
         
         unsigned int phiIdx, thetaIdx;
         
@@ -77,7 +82,7 @@
             
             for (thetaIdx = 0; thetaIdx < m_slices; thetaIdx++) {
                 // sliceごとに、経度方向のVerrtexを生成していく
-                float theta = 1.0 * M_PI * (float) thetaIdx * (1.0 / (float)(m_slices - 1));
+                float theta = 2.0 * M_PI * (float) thetaIdx * (1.0 / (float)(m_slices - 1));
                 cosTheta = cos(theta);
                 sinTheta = sin(theta);
                 
@@ -92,6 +97,14 @@
                 vPtr[4] = m_Scale * sinPhi1 * m_Squash;
                 vPtr[5] = m_Scale * cosPhi1 * sinTheta;
                 
+                nPtr[0] = cosPhi0 * cosTheta;
+                nPtr[1] = sinPhi0;
+                nPtr[2] = cosPhi0 * sinTheta;
+                
+                nPtr[3] = cosPhi1 * cosTheta;
+                nPtr[4] = sinPhi1;
+                nPtr[5] = cosPhi1 * sinTheta;
+                
                 cPtr[0] = red;
                 cPtr[1] = 0;
                 cPtr[2] = blue;
@@ -102,10 +115,13 @@
                 
                 cPtr += 2 * 4;
                 vPtr += 2 * 3;
+                nPtr += 2 * 3;
             }
             blue += colorIncrement;
             red -= colorIncrement;
         }
+        // 頂点の数を求める（処理が終わった後のvPtrのアドレスと先頭位置のアドレスと引いて、6で割ると頂点座標の数を求められる）
+        numVertices = (vPtr-m_VertexData) / 6;
     }
     return self;
 }
@@ -116,10 +132,13 @@
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
     
+    glEnableClientState(GL_NORMAL_ARRAY);
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_COLOR_ARRAY);
     
     glVertexPointer(3, GL_FLOAT, 0, m_VertexData);
+    glNormalPointer(GL_FLOAT, 0, m_NormalData);
+    
     glColorPointer(4, GL_UNSIGNED_BYTE, 0, m_ColorData);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, (m_slices + 1) * 2 * (m_Stacks - 1) + 2);
     
